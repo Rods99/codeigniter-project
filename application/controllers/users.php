@@ -5,9 +5,8 @@
  */
 class Users extends CI_Controller
 {
-    public function show()
+    public function login()
     {
-        $data['users'] = $this->user_model->get_users();
-        $this->load->view('user_view', $data);
+        $this->input->post('username');
     }
 }
