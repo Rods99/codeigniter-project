@@ -21,4 +21,12 @@ class Projects extends CI_Controller
             'main_view' => 'projects/index',
         ]);
     }
+
+    public function show($id)
+    {
+        $this->load->view('layouts/main', [
+            'project' => $this->project_model->get_project($id),
+            'main_view' => 'projects/show',
+        ]);
+    }
 }

@@ -41,14 +41,10 @@
                               <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu">
-                            <li>
-                                <a href="#" onclick="document.getElementById('logout_form').submit();">Logout</a>
-                                <?php echo form_open('users/logout', ['id' => 'logout_form', 'style' => 'display:none']); ?>
-                                    <?php echo form_submit(['name' => 'send', 'value' => 'Logout']); ?>
-                                <?php echo form_close(); ?>
-                            </li>
+                            <li><a href="<?php echo base_url(); ?>users/logout">Logout</a></li>
                           </ul>
                         </li>
+                        
                   <?php else: ?>
                       <li><a href="<?php echo base_url(); ?>/users/register">Register</a></li>
                   <?php endif; ?>
