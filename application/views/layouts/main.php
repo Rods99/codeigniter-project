@@ -9,6 +9,20 @@
     </head>
     <body>
         <div class="container">
+            <?php if ($this->session->flashdata('flash_success')): ?>
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <?php echo $this->session->flashdata('flash_success'); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($this->session->flashdata('flash_danger')): ?>
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <?php echo $this->session->flashdata('flash_danger'); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="col-xs-3">
                 <?php $this->load->view('users/login_view') ?>
             </div>

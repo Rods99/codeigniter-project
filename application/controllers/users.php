@@ -12,6 +12,21 @@ class Users extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('errors', validation_errors());
+        } else {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $user_id = $this->user_model->login_user($username, $password);
+
+            if ($user_id) {
+                $this->session->set_userdata([
+                    'user_id' => $user_id,
+                    'username' => $username,
+                    'logged_in' => true,
+                ]);
+                $this->session->set_flashdata('flash_success', 'You are now logged in');
+            } else {
+                $this->session->set_flashdata('flash_danger', 'Sorry, you are not logged in');
+            }
         }
         redirect('home');
     }
