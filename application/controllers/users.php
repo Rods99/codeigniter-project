@@ -24,6 +24,9 @@ class Users extends CI_Controller
                     'logged_in' => true,
                 ]);
                 $this->session->set_flashdata('flash_success', 'You are now logged in');
+                $data['main_view'] = 'users/admin_view';
+
+                return $this->load->view('layouts/main', $data);
             } else {
                 $this->session->set_flashdata('flash_danger', 'Sorry, you are not logged in');
             }
@@ -34,6 +37,7 @@ class Users extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
+        $this->session->set_flashdata('flash_success', 'You are now logged out');
         redirect('home');
     }
 }
