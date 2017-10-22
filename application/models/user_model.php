@@ -5,6 +5,11 @@
  */
 class User_model extends CI_Model
 {
+    /**
+     * Adds a user in the database given specific input.
+     *
+     * @returns array|false User associative array or false.
+     */
     public function create_user()
     {
         return $this->db->insert('users', [
@@ -16,16 +21,31 @@ class User_model extends CI_Model
         ]);
     }
 
+    /**
+     * Find a user by username and verify their password.
+     * If there is a match, return the user's ID, othwerwise return false.
+     *
+     * @param string $username The user's username
+     * @param string $password The user's password
+     * @returns int|false
+     */
     public function login_user($username, $password)
     {
-        $this->db->where(['username' => $username]);
-        $result = $this->db->get('users');
-        $db_password = $result->row(0)->password;
-
-        if (password_verify($password, $db_password)) {
-            return $result->row(0)->id;
-        } else {
+        if (!$username && $password) {
             return false;
         }
+        $this->db->where(['username' => $username]);
+        $user = $this->db->get('users')->row(0);
+
+        if (!$user) {
+            return false;
+        }
+        $db_password = $user->password;
+
+        if (password_verify($password, $db_password)) {
+            return $user->id;
+        }
+
+        return false;
     }
 }
