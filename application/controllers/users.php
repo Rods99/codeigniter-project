@@ -5,10 +5,29 @@
  */
 class Users extends CI_Controller
 {
+    public function register()
+    {
+        $this->form_validation->set_rules('first_name', 'First name', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
+
+        if ($this->form_validation->run() == false) {
+            $data['main_view'] = 'users/register_view';
+            $this->load->view('layouts/main', $data);
+        } else {
+            if ($this->user_model->create_user()) {
+                redirect('home');
+            } else {
+            }
+        }
+    }
+
     public function login()
     {
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('errors', validation_errors());

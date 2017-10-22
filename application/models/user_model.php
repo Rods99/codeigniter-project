@@ -5,10 +5,16 @@
  */
 class User_model extends CI_Model
 {
-    // public function get_users()
-    // {
-    //     return $this->db->get('users')->result();
-    // }
+    public function create_user()
+    {
+        return $this->db->insert('users', [
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'email' => $this->input->post('email'),
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password'),
+        ]);
+    }
 
     public function login_user($username, $password)
     {
