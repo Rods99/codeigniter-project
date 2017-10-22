@@ -29,7 +29,25 @@
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo base_url(); ?>/users/register">Register</a></li>
+                  <?php if ($this->session->userdata('logged_in')): ?>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                              <?php echo $this->session->userdata('username') ?>
+                              <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" onclick="document.getElementById('logout_form').submit();">Logout</a>
+                                <?php echo form_open('users/logout', ['id' => 'logout_form', 'style' => 'display:none']); ?>
+                                    <?php echo form_submit(['name' => 'send', 'value' => 'Logout']); ?>
+                                <?php echo form_close(); ?>
+                            </li>
+                          </ul>
+                        </li>
+                  <?php else: ?>
+                      <li><a href="<?php echo base_url(); ?>/users/register">Register</a></li>
+                  <?php endif; ?>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

@@ -1,11 +1,5 @@
 <?php if ($this->session->userdata('logged_in')): ?>
-    <h2>Logout</h2>
-    <p>You are logged in as <strong><?php echo $this->session->userdata('username') ?></strong></p>
-    <?php echo form_open('users/logout', ['id' => 'login_form', 'class' => 'form-horizontal']); ?>
-        <div class="form-group">
-            <?php echo form_submit(['class' => 'btn btn-primary', 'name' => 'submit', 'value' => 'Logout']); ?>
-        </div>
-    <?php echo form_close(); ?>
+    <h2>Side Panel</h2>
 
 <?php else: ?>
     <h2>Login</h2>
