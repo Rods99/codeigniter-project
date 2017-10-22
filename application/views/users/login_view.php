@@ -1,7 +1,11 @@
 <h2>Login</h2>
 
 <?php echo $this->session->flashdata('errors'); ?>
+
 <?php
+ foreach ($this->session->flashdata() as $key => $value) {
+     echo $key.':'.$value;
+ }
  foreach ($this->session->all_userdata() as $key => $value) {
      echo $key.':'.$value;
  }
