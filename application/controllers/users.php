@@ -7,14 +7,10 @@ class Users extends CI_Controller
 {
     public function register()
     {
-<<<<<<< Updated upstream
         $this->form_validation->set_rules('first_name', 'First name', 'trim|required|min_length[2]');
         $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|min_length[2]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[2]');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]');
-=======
-        $this->session->set_userdata(['sup' => 'what up']);
->>>>>>> Stashed changes
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
@@ -35,7 +31,6 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
-<<<<<<< Updated upstream
             $this->session->set_flashdata('errors', validation_errors());
         } else {
             $username = $this->input->post('username');
@@ -55,12 +50,6 @@ class Users extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash_danger', 'Invalid username or password');
             }
-=======
-            // echo validation_errors();
-            // die();
-            $this->session->set_flashdata(['errors', validation_errors()]);
-            redirect('home');
->>>>>>> Stashed changes
         }
         redirect('home');
     }
