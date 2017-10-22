@@ -1,7 +1,7 @@
 <?php
 
 /**
- * User's controller.
+ * This controller handles user login/logout and sign up.
  */
 class Users extends CI_Controller
 {
@@ -14,13 +14,10 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('layouts/main', ['main_view' => 'users/register_view']);
-        } else {
-            if ($this->user_model->create_user()) {
-                $this->session->set_flashdata('flash_success', 'Your account has been created');
-                redirect('home');
-            } else {
-            }
+            $this->load->view('layouts/main', ['main_view' => 'users/register']);
+        } elseif ($this->user_model->create_user()) {
+            $this->session->set_flashdata('flash_success', 'Your account has been created');
+            redirect('home');
         }
     }
 
@@ -44,7 +41,7 @@ class Users extends CI_Controller
                 ]);
                 $this->session->set_flashdata('flash_success', 'You are now logged in');
 
-                return $this->load->view('layouts/main', ['main_view' => 'users/admin_view']);
+                return $this->load->view('layouts/main', ['main_view' => 'users/admin']);
             } else {
                 $this->session->set_flashdata('flash_danger', 'Invalid username or password');
             }
