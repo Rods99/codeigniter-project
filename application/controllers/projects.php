@@ -35,9 +35,11 @@ class Projects extends CI_Controller
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
             ];
-            if ($this->project_model->create_project($data)) {
+            $project = $this->project_model->create_project($data);
+
+            if ($project) {
                 $this->session->set_flashdata('flash_success', 'Your project has been created');
-                redirect('projects');
+                redirect('projects/show/'.$project->id);
             }
         }
     }
@@ -69,5 +71,12 @@ class Projects extends CI_Controller
             'main_view' => 'projects/show',
             'project' => $this->project_model->get_project($id),
         ]);
+    }
+
+    public function delete($id)
+    {
+        $this->project_model->delete_project($id);
+        $this->session->set_flashdata('flash_success', 'Your project has been deleted');
+        redirect('projects');
     }
 }

@@ -20,7 +20,7 @@
     </div>
 
     <!-- Submit -->
-    <div class="form-group">
-        <?php echo form_submit(['class' => 'btn btn-primary', 'name' => 'submit', 'value' => 'Update']); ?>
-    </div>
+    <?php echo form_submit(['class' => 'btn btn-primary pull-left', 'name' => 'submit', 'value' => 'Update']); ?>
 <?php echo form_close(); ?>
+
+<a href="<?php echo base_url().'projects/delete/'.$project->id; ?>" class="btn btn-xs btn-danger pull-right">Delete</a>
