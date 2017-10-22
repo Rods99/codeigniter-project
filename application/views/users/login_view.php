@@ -1,4 +1,6 @@
-<h2>Login view</h2>
+<h2>Login</h2>
+
+<?php echo $this->session->flashdata('errors'); ?>
 
 <?php echo form_open('users/login', ['id' => 'login_form', 'class' => 'form-horizontal']); ?>
 

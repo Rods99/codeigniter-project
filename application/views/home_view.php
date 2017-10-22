@@ -1,1 +1,1 @@
-<h1>Now in the home view</h1>
+<h1>Home view</h1>
