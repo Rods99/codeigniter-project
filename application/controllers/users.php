@@ -30,4 +30,10 @@ class Users extends CI_Controller
         }
         redirect('home');
     }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('home');
+    }
 }
