@@ -34,15 +34,13 @@ class Users extends CI_Controller
         }
 
         $this->session->set_userdata([
-                    'user_id' => $user_id,
-                    'username' => $username,
-                    'logged_in' => true,
-                ]);
+            'user_id' => $user_id,
+            'username' => $username,
+            'logged_in' => true,
+        ]);
         $this->session->set_flashdata('flash_success', 'You are now logged in');
 
-        return $this->load->view('layouts/main', ['main_view' => 'users/admin']);
-
-        redirect('home');
+        redirect('projects');
     }
 
     public function logout()
