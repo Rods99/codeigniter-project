@@ -42,6 +42,27 @@ class Projects extends CI_Controller
         }
     }
 
+    public function edit($id)
+    {
+        $project = $this->project_model->get_project($id);
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+        $this->form_validation->set_rules('body', 'Description', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('layouts/main', ['main_view' => 'projects/edit', 'project' => $project]);
+        } else {
+            $data = [
+                'user_id' => $this->session->userdata('user_id'),
+                'name' => $this->input->post('name'),
+                'body' => $this->input->post('body'),
+            ];
+            if ($this->project_model->update_project($id, $data)) {
+                $this->session->set_flashdata('flash_success', 'Your project has been updated');
+                redirect('projects/show/'.$project->id);
+            }
+        }
+    }
+
     public function show($id)
     {
         $this->load->view('layouts/main', [

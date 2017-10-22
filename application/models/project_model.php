@@ -19,4 +19,9 @@ class Project_model extends CI_Model
     {
         return $this->db->insert('projects', $data);
     }
+
+    public function update_project($id, $data)
+    {
+        return $this->db->where('id', $id)->update('projects', $data);
+    }
 }
