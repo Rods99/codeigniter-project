@@ -14,4 +14,9 @@ class Project_model extends CI_Model
     {
         return $this->db->get('projects')->result();
     }
+
+    public function create_project($data)
+    {
+        return $this->db->insert('projects', $data);
+    }
 }
