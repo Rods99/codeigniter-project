@@ -11,8 +11,8 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
-            $this->session->keep_flashdata('errors', validation_errors());
-            redirect('home');
+            $this->session->set_flashdata('errors', validation_errors());
         }
+        redirect('home');
     }
 }

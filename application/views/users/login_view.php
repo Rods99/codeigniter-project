@@ -4,15 +4,6 @@
 
 <?php
  foreach ($this->session->flashdata() as $key => $value) {
-     echo $key.':'.$value;
- }
- foreach ($this->session->all_userdata() as $key => $value) {
-     echo $key.':'.$value;
- }
- ?>
-
-<?php
- foreach ($this->session->flashdata() as $key => $value) {
      echo $key.':'.$value.'<br>';
  }
  foreach ($this->session->all_userdata() as $key => $value) {
