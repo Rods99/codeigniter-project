@@ -1,8 +1,14 @@
+## TODO
+
+1. Improve UI
+1. Sign in user when they register
+1. Refactor views
+
 ## Bugs
 
 ### Session persistence
 
-There was an unknown bug with the session that caused stored values not to be persisted on the next HTTP request. 
+There was an unknown bug with the session that caused stored values not to be persisted on the next HTTP request.
 
 **Attempts:**
 

@@ -18,6 +18,7 @@ class Users extends CI_Controller
             $this->load->view('layouts/main', $data);
         } else {
             if ($this->user_model->create_user()) {
+                $this->session->set_flashdata('flash_success', 'Your account has been created');
                 redirect('home');
             } else {
             }
@@ -47,7 +48,7 @@ class Users extends CI_Controller
 
                 return $this->load->view('layouts/main', $data);
             } else {
-                $this->session->set_flashdata('flash_danger', 'Sorry, you are not logged in');
+                $this->session->set_flashdata('flash_danger', 'Invalid username or password');
             }
         }
         redirect('home');
