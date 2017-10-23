@@ -1,8 +1,20 @@
+A Sample CodeIgniter project based on this [Udemy Course](https://www.udemy.com/php-mvc-framework-codeigniter-tutorial-for-beginners-project)
+
+## Setup
+
+This project was setup using MAMP on Mac OS X El Capitan 10.11.16.
+
+1. [Install MAMP](https://www.mamp.info/en/downloads)
+1. Clone or download this repository
+1. Move the repository folder to the `/Applications/MAMP/htdocs` folder on your local hard drive
+1. Start the MAMP application
+1. In a browser, navigate to http://localhost:8888/codeigniter-project
+
 ## TODO
 
 1. Improve UI
-1. Sign in user when they register
 1. Refactor views
+2. Test on other devices/browser *(currently only tested in Chrome on Mac OS X)*
 
 ## Bugs
 
