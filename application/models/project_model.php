@@ -7,7 +7,9 @@ class Project_model extends CI_Model
 {
     public function create_project($data)
     {
-        return $this->db->insert('projects', $data);
+        $this->db->insert('projects', $data);
+
+        return $this->db->get_where('projects', ['id' => $this->db->insert_id()])->row();
     }
 
     public function get_projects($user_id)
@@ -28,5 +30,10 @@ class Project_model extends CI_Model
     public function delete_project($id, $user_id)
     {
         return $this->db->where(['id' => $id, 'user_id' => $user_id])->delete('projects');
+    }
+
+    public function get_tasks($id, $user_id)
+    {
+        return $this->db->get_where('tasks', ['project_id' => $id, 'user_id' => $user_id])->result();
     }
 }

@@ -31,12 +31,11 @@ class Projects extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('layouts/main', ['main_view' => 'projects/create']);
         } else {
-            $data = [
+            $project = $this->project_model->create_project([
                 'user_id' => $this->session->userdata('user_id'),
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
-            ];
-            $project = $this->project_model->create_project($data);
+            ]);
 
             if ($project) {
                 $this->session->set_flashdata('flash_success', 'Your project has been created');
@@ -53,7 +52,8 @@ class Projects extends CI_Controller
 
             return redirect('projects');
         }
-        $this->load->view('layouts/main', ['main_view' => 'projects/show', 'project' => $project]);
+        $tasks = $this->project_model->get_tasks($id, $user_id);
+        $this->load->view('layouts/main', ['main_view' => 'projects/show', 'project' => $project, 'tasks' => $tasks]);
     }
 
     public function edit($id)
@@ -72,7 +72,6 @@ class Projects extends CI_Controller
             $this->load->view('layouts/main', ['main_view' => 'projects/edit', 'project' => $project]);
         } else {
             $data = [
-                'user_id' => $this->session->userdata('user_id'),
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
             ];

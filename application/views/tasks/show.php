@@ -1,10 +1,14 @@
 <!-- Left side -->
 <div class="col-xs-9">
-    <h2><?php echo $project->name; ?></h2>
-    <p><i><strong>Date Created:</strong> <?php echo $project->date_created; ?></i></p>
+    <h2><strong>Task:</strong> <?php echo $task->name; ?></h2>
+    <h4>
+        <strong>Project:</strong>
+        <a href="<?php echo base_url().'projects/show/'.$project->id; ?>"><?php echo $project->name; ?></a>
+    </h4>
+    <p><i><strong>Date Created:</strong> <?php echo $task->date_created; ?></i></p>
     <br>
     <h4>Description</h4>
-    <p><?php echo $project->body; ?></p>
+    <p><?php echo $task->body; ?></p>
 </div>
 
 
@@ -17,21 +21,15 @@
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Create Task
         </a>
-        <a href="<?php echo base_url().'projects/edit/'.$project->id; ?>" class="btn btn-default" style="text-align: left">
+        <a href="<?php echo base_url().'tasks/edit/'.$task->id; ?>" class="btn btn-default" style="text-align: left">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            Edit Project
+            Edit Task
         </a>
-        <a href="<?php echo base_url().'projects/delete/'.$project->id; ?>" class="btn btn-danger" style="text-align: left">
+        <a href="<?php echo base_url().'tasks/delete/'.$task->id; ?>" class="btn btn-danger" style="text-align: left">
             <small>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                Delete Project
+                Delete Task
             </small>
         </a>
     </div>
-</div>
-
-<div class="clearfix"></div>
-<br>
-<div class="col-xs-12">
-    <?php $this->load->view('tasks/index.php'); ?>
 </div>

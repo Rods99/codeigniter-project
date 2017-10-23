@@ -1,13 +1,18 @@
-<h2>Create a project</h2>
+<h2>
+    Create a task for the
+    <a href="<?php echo base_url().'projects/show/'.$project->id; ?>"><?php echo $project->name; ?></a>
+    project
+</h2>
+<br>
 
 <?php echo validation_errors('<p class="bg-danger">'); ?>
-<?php echo form_open('projects/create', ['id' => 'project_form', 'class' => 'form-horizontal']); ?>
+<?php echo form_open('tasks/create/'.$project->id, ['id' => 'task_form', 'class' => 'form-horizontal']); ?>
 
     <!-- Name -->
     <div class="form-group">
         <?php
         echo form_label('Name');
-        echo form_input(['class' => 'form-control', 'name' => 'name', 'placeholder' => 'Enter project name']);
+        echo form_input(['class' => 'form-control', 'name' => 'name', 'placeholder' => 'Enter task name']);
         ?>
     </div>
 
@@ -15,7 +20,7 @@
     <div class="form-group">
         <?php
         echo form_label('Description');
-        echo form_textarea(['class' => 'form-control', 'name' => 'body', 'placeholder' => 'Enter project description']);
+        echo form_textarea(['class' => 'form-control', 'name' => 'body', 'placeholder' => 'Enter task description']);
         ?>
     </div>
 
