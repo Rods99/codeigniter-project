@@ -9,8 +9,8 @@ class Users extends CI_Controller
     {
         $this->form_validation->set_rules('first_name', 'First name', 'trim|required|min_length[2]');
         $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|min_length[2]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[2]');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[2]|is_unique[users.username]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
