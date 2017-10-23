@@ -1,4 +1,4 @@
-A Sample CodeIgniter project based on this [Udemy Course](https://www.udemy.com/php-mvc-framework-codeigniter-tutorial-for-beginners-project)
+A Sample CodeIgniter project based on this [Udemy Course](https://www.udemy.com/php-mvc-framework-codeigniter-tutorial-for-beginners-project).
 
 ## Setup
 
@@ -14,7 +14,8 @@ This project was setup using MAMP on Mac OS X El Capitan 10.11.16.
 
 1. Improve UI
 1. Refactor views
-2. Test on other devices/browser *(currently only tested in Chrome on Mac OS X)*
+1. Test on other devices/browser *(currently only tested in Chrome on Mac OS X)*
+1. Make the app publicly available via Heroku
 
 ## Bugs
 

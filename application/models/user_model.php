@@ -12,13 +12,15 @@ class User_model extends CI_Model
      */
     public function create_user()
     {
-        return $this->db->insert('users', [
+        $this->db->insert('users', [
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
             'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT, ['cost' => 10]),
         ]);
+
+        return $this->db->get_where('users', ['id' => $this->db->insert_id()])->row();
     }
 
     /**

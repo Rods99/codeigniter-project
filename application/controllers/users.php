@@ -14,11 +14,18 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('layouts/main', ['main_view' => 'users/register']);
-        } elseif ($this->user_model->create_user()) {
-            $this->session->set_flashdata('flash_success', 'Your account has been created');
-            redirect('home');
+            return $this->load->view('layouts/main', ['main_view' => 'users/register']);
         }
+        $user = $this->user_model->create_user();
+        if ($user) {
+            $this->session->set_flashdata('flash_success', 'Your account has been created. You are now signed in.');
+            $this->session->set_userdata([
+                'user_id' => $user->id,
+                'username' => $user->username,
+                'logged_in' => true,
+            ]);
+        }
+        redirect('home');
     }
 
     public function login()
