@@ -50,6 +50,7 @@ class Tasks extends CI_Controller
                 'project_id' => $project_id,
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
+                'due_date' => $this->input->post('due_date'),
             ]);
 
             if ($task) {
@@ -90,6 +91,7 @@ class Tasks extends CI_Controller
             $data = [
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
+                'due_date' => $this->input->post('due_date'),
             ];
             if ($this->task_model->update_task($id, $data, $user_id)) {
                 $this->session->set_flashdata('flash_success', 'Your task has been updated');

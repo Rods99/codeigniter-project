@@ -24,6 +24,15 @@
         ?>
     </div>
 
+    <!-- Due Date -->
+    <div class="form-group">
+        <?php
+        echo form_label('Due Date');
+        echo form_input(['class' => 'form-control', 'name' => 'due_date', 'type' => 'date']);
+        ?>
+    </div>
+
+
     <!-- Submit -->
     <?php echo form_submit(['class' => 'btn btn-primary pull-left', 'name' => 'submit', 'value' => 'Update']); ?>
 <?php echo form_close(); ?>

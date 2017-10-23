@@ -24,6 +24,14 @@
         ?>
     </div>
 
+    <!-- Due Date -->
+    <div class="form-group">
+        <?php
+        echo form_label('Due Date');
+        echo form_input(['class' => 'form-control', 'name' => 'due_date', 'type' => 'date']);
+        ?>
+    </div>
+
     <!-- Submit -->
     <div class="form-group">
         <?php echo form_submit(['class' => 'btn btn-primary', 'name' => 'submit', 'value' => 'Create']); ?>
