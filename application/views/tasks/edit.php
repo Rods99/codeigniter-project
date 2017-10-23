@@ -12,7 +12,7 @@
     <div class="form-group">
         <?php
         echo form_label('Name');
-        echo form_input(['class' => 'form-control', 'name' => 'name', 'value' => $task->name]);
+        echo form_input(['name' => 'name', 'value' => set_value('name', $task->name), 'class' => 'form-control']);
         ?>
     </div>
 
@@ -20,7 +20,7 @@
     <div class="form-group">
         <?php
         echo form_label('Description');
-        echo form_textarea(['class' => 'form-control', 'name' => 'body', 'value' => $task->body]);
+        echo form_textarea(['name' => 'body', 'value' => set_value('body', $task->body), 'class' => 'form-control']);
         ?>
     </div>
 
@@ -28,7 +28,12 @@
     <div class="form-group">
         <?php
         echo form_label('Due Date');
-        echo form_input(['class' => 'form-control', 'name' => 'due_date', 'type' => 'date', 'value' => $task->due_date]);
+        echo form_input([
+            'name' => 'due_date',
+            'value' => set_value('due_date', $task->due_date),
+            'class' => 'form-control',
+            'type' => 'date',
+        ]);
         ?>
     </div>
 

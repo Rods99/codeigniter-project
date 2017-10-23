@@ -7,7 +7,12 @@
     <div class="form-group">
         <?php
         echo form_label('Name');
-        echo form_input(['class' => 'form-control', 'name' => 'name', 'placeholder' => 'Enter project name']);
+        echo form_input([
+            'name' => 'name',
+            'value' => set_value('body'),
+            'class' => 'form-control',
+            'placeholder' => 'Enter project name',
+        ]);
         ?>
     </div>
 
@@ -15,7 +20,12 @@
     <div class="form-group">
         <?php
         echo form_label('Description');
-        echo form_textarea(['class' => 'form-control', 'name' => 'body', 'placeholder' => 'Enter project description']);
+        echo form_textarea([
+            'name' => 'body',
+            'value' => set_value('body'),
+            'class' => 'form-control',
+            'placeholder' => 'Enter project description',
+        ]);
         ?>
     </div>
 

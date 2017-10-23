@@ -7,7 +7,7 @@
     <div class="form-group">
         <?php
         echo form_label('Name');
-        echo form_input(['class' => 'form-control', 'name' => 'name', 'value' => $project->name]);
+        echo form_input(['name' => 'name', 'value' => set_value('name', $project->name), 'class' => 'form-control']);
         ?>
     </div>
 
@@ -15,12 +15,12 @@
     <div class="form-group">
         <?php
         echo form_label('Description');
-        echo form_textarea(['class' => 'form-control', 'name' => 'body', 'value' => $project->body]);
+        echo form_textarea(['name' => 'body', 'value' => set_value('body', $project->body), 'class' => 'form-control']);
         ?>
     </div>
 
     <!-- Submit -->
-    <?php echo form_submit(['class' => 'btn btn-primary pull-left', 'name' => 'submit', 'value' => 'Update']); ?>
+    <?php echo form_submit(['name' => 'submit', 'value' => 'Update', 'class' => 'btn btn-primary pull-left']); ?>
 <?php echo form_close(); ?>
 
 <a href="<?php echo base_url().'projects/delete/'.$project->id; ?>" class="btn btn-xs btn-danger pull-right">Delete</a>
