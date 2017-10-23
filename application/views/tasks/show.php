@@ -6,6 +6,7 @@
         <a href="<?php echo base_url().'projects/show/'.$project->id; ?>"><?php echo $project->name; ?></a>
     </h4>
     <p><i><strong>Date Created:</strong> <?php echo $task->date_created; ?></i></p>
+    <p><i><strong>Due Date:</strong> <?php echo $task->due_date; ?></i></p>
     <br>
     <h4>Description</h4>
     <p><?php echo $task->body; ?></p>
@@ -20,6 +21,12 @@
         <a href="<?php echo base_url().'tasks/create/'.$project->id; ?>" class="btn btn-default" style="text-align: left">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Create Task
+        </a>
+        <a href="<?php echo base_url().'tasks/toggle_completion/'.$task->id; ?>" class="btn btn-default" style="text-align: left">
+            <small>
+                <span class="glyphicon glyphicon-<?php echo $task->is_complete ? 'check' : 'unchecked'?>" aria-hidden="true"></span>
+                Mark <?php echo $task->is_complete ? 'incomplete' : 'complete'?>
+            </small>
         </a>
         <a href="<?php echo base_url().'tasks/edit/'.$task->id; ?>" class="btn btn-default" style="text-align: left">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

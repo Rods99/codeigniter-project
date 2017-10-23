@@ -29,11 +29,20 @@ class Project_model extends CI_Model
 
     public function delete_project($id, $user_id)
     {
+        $this->db->where(['project_id' => $id])->delete('tasks');
+
         return $this->db->where(['id' => $id, 'user_id' => $user_id])->delete('projects');
     }
 
-    public function get_tasks($id, $user_id)
+    public function get_tasks($id, $user_id, $options = [])
     {
-        return $this->db->get_where('tasks', ['project_id' => $id, 'user_id' => $user_id])->result();
+        $input = ['project_id' => $id, 'user_id' => $user_id];
+        if ($options['is_complete']) {
+            $input['is_complete'] = true;
+        } elseif ($options['is_complete'] == false) {
+            $input['is_complete'] = false;
+        }
+
+        return $this->db->get_where('tasks', $input)->result();
     }
 }

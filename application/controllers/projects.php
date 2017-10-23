@@ -52,8 +52,14 @@ class Projects extends CI_Controller
 
             return redirect('projects');
         }
-        $tasks = $this->project_model->get_tasks($id, $user_id);
-        $this->load->view('layouts/main', ['main_view' => 'projects/show', 'project' => $project, 'tasks' => $tasks]);
+        $complete_tasks = $this->project_model->get_tasks($id, $user_id, ['is_complete' => true]);
+        $incomplete_tasks = $this->project_model->get_tasks($id, $user_id, ['is_complete' => false]);
+        $this->load->view('layouts/main', [
+            'main_view' => 'projects/show',
+            'project' => $project,
+            'complete_tasks' => $complete_tasks,
+            'incomplete_tasks' => $incomplete_tasks,
+        ]);
     }
 
     public function edit($id)

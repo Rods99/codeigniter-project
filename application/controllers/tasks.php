@@ -17,9 +17,12 @@ class Tasks extends CI_Controller
     public function index()
     {
         $user_id = $this->session->userdata('user_id');
+        $complete_tasks = $this->task_model->get_tasks($user_id, ['is_complete' => true]);
+        $incomplete_tasks = $this->task_model->get_tasks($user_id, ['is_complete' => false]);
         $this->load->view('layouts/main', [
             'main_view' => 'tasks/index',
-            'tasks' => $this->task_model->get_tasks($user_id),
+            'complete_tasks' => $complete_tasks,
+            'incomplete_tasks' => $incomplete_tasks,
         ]);
     }
 
@@ -50,7 +53,7 @@ class Tasks extends CI_Controller
                 'project_id' => $project_id,
                 'name' => $this->input->post('name'),
                 'body' => $this->input->post('body'),
-                'due_date' => $this->input->post('due_date'),
+                'due_date' => $this->input->post('due_date') ?: date('Y-m-d'),
             ]);
 
             if ($task) {
@@ -112,13 +115,30 @@ class Tasks extends CI_Controller
 
             return redirect('tasks');
         }
-        $project = $this->project_model->get_project($task->project_id, $user_id);
         if ($this->task_model->delete_task($id, $user_id)) {
             $this->session->set_flashdata('flash_success', 'Your task has been deleted');
         } else {
             $this->denied_message();
         }
-        redirect('projects/show/'.$project->id);
+        redirect('projects/show/'.$task->project_id);
+    }
+
+    public function toggle_completion($id)
+    {
+        $user_id = $this->session->userdata('user_id');
+        $task = $this->task_model->get_task($id, $user_id);
+        if (!$task) {
+            $this->denied_message();
+
+            return redirect('tasks');
+        }
+        if ($task->is_complete) {
+            $this->session->set_flashdata('flash_success', '<strong>'.$task->name.'</strong> has been marked incomplete');
+        } else {
+            $this->session->set_flashdata('flash_success', '<strong>'.$task->name.'</strong> has been completed');
+        }
+        $this->task_model->toggle_completion($id, $user_id);
+        redirect('projects/show/'.$task->project_id);
     }
 
     private function denied_message()

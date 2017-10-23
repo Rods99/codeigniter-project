@@ -28,7 +28,7 @@
     <div class="form-group">
         <?php
         echo form_label('Due Date');
-        echo form_input(['class' => 'form-control', 'name' => 'due_date', 'type' => 'date']);
+        echo form_input(['class' => 'form-control', 'name' => 'due_date', 'type' => 'date', 'value' => $task->due_date]);
         ?>
     </div>
 
